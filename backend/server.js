@@ -69,7 +69,7 @@ app.post("/upload", upload.single("screenshot"), (req, res) => {
       .json({ success: false, message: "Kein Bild hochgeladen" });
   }
 
-  currentScreenshot = `http://localhost:4000/uploads/${req.file.filename}`;
+  currentScreenshot = `http://87.106.33.94:4000/uploads/${req.file.filename}`;
   io.emit("newScreenshot", currentScreenshot); // An alle Clients senden
   res.json({ success: true, imageUrl: currentScreenshot });
 });
