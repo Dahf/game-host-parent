@@ -181,7 +181,7 @@ export default function GameHost() {
       });
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-10">
       <h1 className="text-3xl font-bold mb-6">Game Host</h1>
       {userType ? (
         <button
@@ -297,11 +297,11 @@ export default function GameHost() {
           </button>
         </div>
       ) : (
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-7xl">
           <h2 className="text-xl font-semibold mb-4">Spielerliste:</h2>
           <ul className="mb-4">
             {players.map((player, index) => (
-              <li key={index} className="border-b border-gray-700 py-2">
+              <li key={index} class Name="border-b border-gray-700 py-2">
                 {player.name} - {player.points} Punkte
               </li>
             ))}
@@ -311,7 +311,7 @@ export default function GameHost() {
             <img
               src={screenshot}
               alt="Screenshot"
-              className="w-full max-w-md rounded-md shadow-lg"
+              className="w-full max-w-7xl h-auto rounded-md shadow-lg"
             />
           ) : null}
           <button
