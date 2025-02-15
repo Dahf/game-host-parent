@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import io from "socket.io-client";
 import Cookies from "js-cookie";
 
-const socket = io("http://localhost:4000");
+const socket = io("http://87.106.33.94:4000");
 
 export default function GameHost() {
   const [players, setPlayers] = useState([]);
@@ -34,7 +34,7 @@ export default function GameHost() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:4000/players")
+    fetch("http://87.106.33.94:4000/players")
       .then((res) => res.json())
       .then((data) => setPlayers(data.players))
       .catch((err) =>
@@ -66,7 +66,7 @@ export default function GameHost() {
   }, []);
 
   const loginAsAdmin = () => {
-    fetch("http://localhost:4000/login", {
+    fetch("http://87.106.33.94:4000/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ password: adminPassword }),
@@ -89,7 +89,7 @@ export default function GameHost() {
 
   const joinGame = () => {
     if (name) {
-      fetch("http://localhost:4000/join", {
+      fetch("http://87.106.33.94:4000/join", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name }),
@@ -128,7 +128,7 @@ export default function GameHost() {
     const formData = new FormData();
     formData.append("screenshot", file);
 
-    fetch("http://localhost:4000/upload", {
+    fetch("http://87.106.33.94:4000/upload", {
       method: "POST",
       body: formData,
     })
@@ -168,7 +168,7 @@ export default function GameHost() {
     socket.emit("resetBuzz");
   };
   const updatePoints = (playerName, delta) => {
-    fetch("http://localhost:4000/updatePoints", {
+    fetch("http://87.106.33.94:4000/updatePoints", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: playerName, points: delta }),
