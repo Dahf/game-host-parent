@@ -1,7 +1,7 @@
 services:
   frontend:
     build:
-      context: ./frontend
+      context: ./game-host
     ports:
       - "3000:3000"
     depends_on:
