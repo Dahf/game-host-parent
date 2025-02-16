@@ -18,7 +18,7 @@ export default function GameHost() {
   const [userType, setUserType] = useState("");
   const [gameStarted, setGameStarted] = useState(false);
   const [screenshot, setScreenshot] = useState(null);
-
+  const buzzerSound = new Audio("/buzzer.mp3");
   useEffect(() => {
     const savedUserType = Cookies.get("userType");
     const savedName = Cookies.get("name");
@@ -45,6 +45,7 @@ export default function GameHost() {
     socket.on("buzzed", ({ name }) => {
       setBuzzedPlayer(name);
       setBuzzerDisabled(true);
+      buzzerSound.play();
     });
     socket.on("buzzReset", () => {
       setBuzzedPlayer(null);
